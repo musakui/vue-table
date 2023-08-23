@@ -1,0 +1,19 @@
+{
+	"name": "@musakui/vue-table",
+	"description": "headless table using Vue",
+	"license": "MIT",
+	"version": "0.0.1",
+	"type": "module",
+	"main": "lib/index.js",
+	"types": "lib/types.d.ts",
+	"scripts": {
+	},
+	"peerDependencies": {
+		"vue": "^3.3.0"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "latest",
+		"vite": "latest",
+		"vue": "^3.3.0"
+	}
+}
