@@ -31,5 +31,3 @@ interface ColSlot<T> {
 }
 
 export type SlotFunction<T, U = {}> = (_: ColSlot<T> & U) => unknown
-
-export * from '.'
