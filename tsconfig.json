@@ -12,5 +12,8 @@
 		"useDefineForClassFields": true,
 		"lib": ["ESNext", "DOM", "DOM.Iterable"]
 	},
-	"include": ["lib/TableView.vue", "lib/utils.js"]
+	"include": [
+		"lib/TableView.vue",
+		"lib/index.js"
+	]
 }

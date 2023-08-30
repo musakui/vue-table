@@ -22,6 +22,32 @@ export interface ColumnDefinition<T> {
 	hover?: RowFunction<T>
 }
 
+export interface TableProps<T> {
+	/** rows to display */
+	rows: T[]
+
+	/** array of column definitions */
+	columns: ColumnDefinition<T>[]
+
+	/** function to get the ID of a row */
+	id?: RowFunction<T, string | number>
+
+	/** classes to use on `thead` */
+	headClass?: ClassBinding
+
+	/** classes to use on `tbody` */
+	bodyClass?: ClassBinding
+
+	/** default classes to use on `th` elements */
+	hClass?: ClassBinding
+
+	/** default classes to use on `tr` elements */
+	rClass?: ClassBinding
+
+	/** default classes to use on `td` elements */
+	dClass?: ClassBinding
+}
+
 interface ColSlot<T> {
 	/** current column definition */
 	col: ColumnDefinition<T>
@@ -30,4 +56,13 @@ interface ColSlot<T> {
 	columns: ColumnDefinition<T>[]
 }
 
-export type SlotFunction<T, U = {}> = (_: ColSlot<T> & U) => unknown
+interface CellSlot<T> extends ColSlot<T> {
+	/** current item */
+	row: T
+}
+
+export type SlotProps<T, ColKey extends string = string> = {
+	[K in ColKey as `th:${K}`]?: (_: ColSlot<T>) => unknown
+} & {
+	[K in ColKey as `td:${K}`]?: (_: CellSlot<T>) => unknown
+}

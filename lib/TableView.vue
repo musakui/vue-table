@@ -1,33 +1,9 @@
 <script setup lang="ts" generic="T extends { id?: string | number }">
 import { computed } from 'vue'
 
-import type { ColumnDefinition, RowFunction, ClassBinding, SlotFunction } from './types'
+import type { TableProps, SlotProps } from './types'
 
-const props = defineProps<{
-	/** rows to display */
-	rows: T[]
-
-	/** array of column definitions */
-	columns: ColumnDefinition<T>[]
-
-	/** function to get the ID of a row */
-	id?: RowFunction<T, string | number>
-
-	/** classes to use on `thead` */
-	headClass?: ClassBinding
-
-	/** classes to use on `tbody` */
-	bodyClass?: ClassBinding
-
-	/** default classes to use on `th` elements */
-	hClass?: ClassBinding
-
-	/** default classes to use on `tr` elements */
-	rClass?: ClassBinding
-
-	/** default classes to use on `td` elements */
-	dClass?: ClassBinding
-}>()
+const props = defineProps<TableProps<T>>()
 
 const getDisplay = (prop: string) => {
 	if (prop.indexOf('.') < 0) {
@@ -58,17 +34,7 @@ const showCols = computed(() => {
 	})
 })
 
-type ColKey = (typeof props)['columns'][number]['key']
-type RowSlot = {
-	/** current item */
-	row: T
-}
-
-defineSlots<{
-	[K in ColKey as `th:${K}`]?: SlotFunction<T>
-} & {
-	[K in ColKey as `td:${K}`]?: SlotFunction<T, RowSlot>
-}>()
+defineSlots<SlotProps<T>>()
 </script>
 
 <template>
