@@ -13,7 +13,6 @@
 		"lib": ["ESNext", "DOM", "DOM.Iterable"]
 	},
 	"include": [
-		"lib/TableView.vue",
-		"lib/index.js"
+		"lib/**/*.js"
 	]
 }
