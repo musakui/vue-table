@@ -22,14 +22,14 @@
 		"dev": "vite"
 	},
 	"peerDependencies": {
-		"vue": "^3.4.0"
+		"vue": "^3.5.0"
 	},
 	"devDependencies": {
-		"@unocss/reset": "latest",
 		"@vitejs/plugin-vue": "latest",
+		"typescript": "latest",
 		"unocss": "latest",
 		"vite": "latest",
-		"vue": "^3.4.0",
+		"vue": "latest",
 		"vue-tsc": "latest"
 	}
 }
